@@ -1,6 +1,10 @@
 const express = require('express');
 const app = express();
 
+// Everything used on the client-side (images, scripts) 
+// are pulled from the 'public' folder AS IF THEY WERE
+// FROM THE ROOT URL ('/'). So '/public/script.js' is now
+// simply 'script.js'
 app.use(express.static('public'));
 
 // Resolves GET requests to homepage, sends index.html
