@@ -3,20 +3,28 @@ const app = express();
 
 app.use(express.static('public'));
 
-
+// Resolves GET requests to homepage, sends index.html
 app.get('/', (req, res) => {
   res.sendFile(__dirname + '/index.html');
 });
 
-app.get('/get-info', (req, res) => {
-  info = {
-    name: "Patrick",
-    status: "big dog",
-  }
+// API: request originates from client-side JS (in public folder)
+// and the server (this) responds with the Patrick object
+app.post('/get-info', (req, res) => {
+  var info = getPatrickObject("big dog");
   res.send(info);
 });
 
+// You can write functions that do whatever you want
+// before sending a response.
+function getPatrickObject(status){
+  return info = {
+    name: "Patrick",
+    status,
+  }
+}
 
+// Listening on Port 3000
 app.listen(3000, () => {
   console.log('listening on *:3000');
 });
