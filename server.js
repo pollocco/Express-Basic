@@ -8,11 +8,12 @@ app.get('/', (req, res) => {
   res.sendFile(__dirname + '/index.html');
 });
 
-app.post('/get-info', (req, res) => {
+app.get('/get-info', (req, res) => {
   info = {
     name: "Patrick",
     status: "big dog",
   }
+  res.send(info);
 });
 
 
